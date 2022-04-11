@@ -1,0 +1,67 @@
+// The original kdb_get.c  was modified by Professor Zheng, 9/15/2012
+// The modification allows the detection completed in one function call. 
+// The original kdb_get.c  is called once for one column scan.  
+// It does not allow the external interrupt and was not work reliably if there 
+// are many other operations in the main loop. The program is also simplified 
+// for study purposes.
+
+// Code adapted to PIC24 on 08/30/2017 by Vinicius Binotti
+// Modified for correct rows by Dr. Zheng, 9/4/2017
+// Columns are output, shared output pins to LCD data, Row are input. 
+
+#word kbd = getenv("SFR:PORTB")
+
+char const KEYS[4][4] = {{'1','2','3','A'},
+                        {'4','5','6','B'},
+                        {'7','8','9','C'},
+                        {'*','0','#','D'}};
+void kbd_init() {}
+
+char kbd_getc() {
+   int1 kbd_down=0;
+   int1 idd = 0;   
+   char last_key;
+   unsigned int8 col = 0;
+
+   unsigned int8 kchar;
+   unsigned int8 row;
+   kchar = '\0';
+   
+   set_tris_b(0x0F00 | (0x00FF & get_tris_b())); //B12-15: output, B8-B11: Input
+   
+   while(idd==0){
+       
+      delay_us(100);                       // This delay adds de-bounce 
+     if (col == 0) {kbd = (0xEF00 | (0x00FF & kbd));} // set D1, 1st col, low
+       else if (col == 1) {kbd = (0xDF00 | (0x00FF & kbd));} // set D2, 2nd col, low
+       else if (col == 2) {kbd = (0xBF00 | (0x00FF & kbd));} // set D3, 3rd column to low
+       else if (col == 3) {kbd = (0x7F00 | (0x00FF & kbd));} // set D4, 4th col to low
+       
+       if(kbd_down) {
+         if((kbd & 0x0F00)==0x0F00) {
+           kbd_down=FALSE;
+           kchar=last_key;
+           last_key='\0';
+           idd = 1;
+         }
+       } 
+       else 
+       {
+          if((kbd & 0x0F00)!=0x0F00) { // if a key is pressed, one of row will be low
+             if((kbd & 0x0800)==0) row=0;
+             else if((kbd & 0x0400)==0) row=1;
+             else if((kbd & 0x0200)==0) row=2;
+             else if((kbd & 0x0100)==0) row=3;
+             last_key =KEYS[3 - col][3 - row]; //Flipped this and subtracted from three to swap rows and columns
+             kbd_down = TRUE;
+          } 
+          else 
+          {
+             ++col;
+             if(col==4) col=0;
+          }
+       }   
+   }
+  return(kchar);
+}
+

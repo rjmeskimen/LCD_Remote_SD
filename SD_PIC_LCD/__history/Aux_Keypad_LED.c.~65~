@@ -1,0 +1,255 @@
+//#include <Lab 4 ECE 422.h>
+
+#include <Aux_Keypad_LED.h>
+
+//Already Declared in .h file
+//#include <24FV16KM202.h>
+
+#FUSES FRC_PLL
+
+#use delay(clock = 32MHZ, internal = 8MHZ)
+#use fast_io(B)
+
+//Serial Port communication
+#USE RS232(UART2, BAUD = 115200, PARITY = N, BITS = 8, STOP = 1, TIMEOUT = 500)
+
+//DEFINE LCD PINS
+#define LCD_ENABLE_PIN  PIN_A7
+#define LCD_RS_PIN      PIN_B8
+#define LCD_RW_PIN      PIN_B9
+#define LCD_DATA4       PIN_B12
+#define LCD_DATA5       PIN_B13
+#define LCD_DATA6       PIN_B14
+#define LCD_DATA7       PIN_B15
+#define LED_PIN         PIN_A2
+
+#define LCD_EXTENDED_NEWLINE //Include for enable 4 line LED
+
+#include <LCD.C>
+#include "kbd_mod_123A_int.c"
+
+//Flags for Both interrupts
+int1 serial_flag = 0;
+int1 keypad_flag = 0;
+char key;
+char UARTKey;
+
+//UART Interrupt
+#INT_RDA2
+void isr_uart()
+{
+   UARTKey = getc();
+   serial_flag = 1;
+}
+
+#INT_EXT0
+void ist_ext()
+{
+   key = kbd_getc();
+   keypad_flag = 1;
+}
+
+void lcd_display(char c)
+{
+   disable_interrupts(INT_EXT0);
+   set_pullup(false);
+   lcd_putc(c);
+   kbd_init();
+   clear_interrupt(INT_EXT0);
+   enable_interrupts(INT_EXT0);
+ 
+}
+
+void disableKeypad(void);
+void enableKeypad(void);
+
+void clearLine(void);
+void lcdShift();
+void systemInit(void);
+void menuRefresh(int);
+
+int state = 1; 
+int selected = 1;
+
+CONST int BOTTOM = 4;
+CONST int TOP = 1;
+/*
+STATE GUIDE:
+
+   0 - MENU
+*/
+
+void main()
+{
+//----------------------DECLARATIONS AND INITIATIONS---------------------------//
+   systemInit();
+
+   printf("\n\rHello...\n\r");
+   
+   serial_flag = 0;
+   keypad_flag = 0;
+   
+   unsigned int8 xPosition = 1;
+   
+   //Pressed indicates if a number has been pressed 
+   boolean pressed = 0;
+   //printf(lcd_putc , "Hi\nHi\nHi\n");
+//----------------------INFINITE LOOP-----------------------------------//
+   while(1)
+   {
+   
+   
+     if(keypad_flag)
+     {
+         disableKeypad();
+         //lcd_putc(key);
+         switch(state){
+            case 1: //Main Menu State
+               if(key == 'A') //UP KEY
+               {
+                  if(selected != TOP)
+                     selected--;
+                  menuRefresh(selected);
+                  
+               }
+               else if(key == 'B') //Down KEY
+               {
+                  if(selected != BOTTOM)
+                     selected++;
+                  menuRefresh(selected);
+               }
+            break;
+            case 2:
+               
+            break;
+         
+         }
+         
+         enableKeypad();
+         keypad_flag = 0;
+     }
+     else if(serial_flag) //If Serial Data is Received
+     {
+         serial_flag = 0;
+     }
+   //serial_flag = 0;
+   //   keypad_flag = 0;
+
+   }
+}
+//Clear Line
+void clearLine(void)
+{
+   disable_interrupts(INT_EXT0);
+   set_pullup(false);
+   //Precondition: The cursor is set to the line that you want to clear
+   //Postcondition: The line is clear but cursor is at x = 17 of whatever line was cleared
+   //MUST MOVE CURSOR
+   for(int i = 0; i <16;i++)
+   {
+      lcd_putc(' ');
+   }
+   
+   //lcd_gotoxy(1,1);
+   kbd_init();
+   clear_interrupt(INT_EXT0);
+   enable_interrupts(INT_EXT0);
+}
+
+//Cool Function
+//Shifts the top line over
+void lcdShift(void)
+{
+   disable_interrupts(INT_EXT0);
+   set_pullup(false);
+   //char temp1;
+   char temp2;
+   
+   //int cursor = 1;
+   
+   lcd_gotoxy(1,1);
+   
+   for(int i = 1; i < 16; i++)
+   {
+      temp2 = lcd_getc(i+1,1);
+      
+      lcd_gotoxy(i,1);
+      
+      lcd_putc(temp2);
+      //lcd_gotoxy(i,1);
+      
+   }
+   
+   lcd_gotoxy(16,1);
+   lcd_putc(' ');
+   lcd_gotoxy(16,1);
+   
+   kbd_init();
+   clear_interrupt(INT_EXT0);
+   enable_interrupts(INT_EXT0);
+   
+}
+
+void disableKeypad()
+{
+   disable_interrupts(INT_EXT0);
+   set_pullup(false);
+}
+
+void enableKeypad()
+{
+   kbd_init();
+   clear_interrupt(INT_EXT0);
+   enable_interrupts(INT_EXT0);
+}
+
+void enableInterrupts()
+{
+
+}
+void systemInit(void)
+{
+   lcd_init();
+   
+   //lcd_cursor_on(TRUE);
+   
+   printf(lcd_putc, "Powering ON");
+   delay_ms(500);
+   printf(lcd_putc, "\f");
+   
+   menuRefresh(selected);
+   
+   kbd_init();
+   ext_int_edge(L_TO_H);
+   clear_interrupt(INT_EXT0);
+   
+   enable_interrupts(INT_EXT0);
+   enable_interrupts(INT_RDA2);
+   enable_interrupts(INTR_GLOBAL);
+}
+
+void menuRefresh(int selected)
+{
+   printf(lcd_putc, "\f"); //Clear Screen
+   
+   if(selected == 1)
+   {
+      printf(lcd_putc, "> ");
+   }
+   printf(lcd_putc, "Single Sample\n");
+   if(selected == 2)
+   {
+      printf(lcd_putc, "> ");
+   }
+   printf(lcd_putc, "Sweep\n");
+   if(selected == 3)
+   {
+      printf(lcd_putc, "> ");
+   }
+   printf(lcd_putc, "Full Sweep\n");
+   if(selected == 4)
+   {
+      printf(lcd_putc, "> ");
+   }
+   printf(lcd_putc, "Clear\n");
+}

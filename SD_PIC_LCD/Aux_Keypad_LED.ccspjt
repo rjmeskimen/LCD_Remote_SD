@@ -1,0 +1,199 @@
+[PROJECT]
+Target=Aux_Keypad_LED.hex
+Processor_Text=PIC24FV16KM202
+CCSVerions=5.068
+Compiler=PCD
+CCSVersion=5.068
+[Target Data]
+FileList=Aux_Keypad_LED.c
+[Directories]
+Include=
+[C:\Users\rjmes\Desktop\SD_PIC_LCD\Aux_Keypad_LED]
+Type=4
+[mru-list]
+1=Aux_Keypad_LED.c
+
+[ProjectLog]
+Days=10
+D1=24-02-2022
+D1_L=45
+D1_L1=[46973]Project Opened.
+D1_L2=[47088]Started Editing.
+D1_L3=[47430]Stopped Editing.
+TotalEdit=284
+TotalDebug=24
+D1_E=26
+D1_D=0
+D1_L4=[47525]Project Closed.
+D1_L5=[47533]Project Opened.
+D1_L6=[47555]Project Closed.
+D1_L7=[47606]Project Opened.
+D1_L8=[47613]Started Editing.
+D1_L9=[47923]Stopped Editing.
+D1_L10=[52156]Started Editing.
+D1_L11=[52356]Stopped Editing.
+D1_L12=[52358]Project Closed.
+D1_L13=[52455]Project Opened.
+D1_L14=[52457]Project Closed.
+D1_L15=[52457]Project Opened.
+D1_L16=[52458]Project Closed.
+D1_L17=[52467]Project Opened.
+D1_L18=[52472]Started Editing.
+D1_L19=[52478]Stopped Editing.
+D1_L20=[52480]Project Closed.
+D1_L21=[52489]Project Opened.
+D1_L22=[52499]Started Editing.
+D1_L23=[52511]Stopped Editing.
+D1_L24=[52513]Project Closed.
+D1_L25=[56747]Project Opened.
+D1_L26=[56787]Started Editing.
+D1_L27=[56858]Stopped Editing.
+D1_L28=[56859]Project Closed.
+D1_L29=[56881]Project Opened.
+D1_L30=[56887]Started Editing.
+D1_L31=[57208]Stopped Editing.
+D1_L32=[57208]Project Closed.
+D1_L33=[57235]Project Opened.
+D1_L34=[57237]Started Editing.
+D1_L35=[57583]Stopped Editing.
+D1_L36=[57594]Project Closed.
+D1_L37=[57606]Project Opened.
+D1_L38=[57610]Started Editing.
+D1_L39=[57876]Stopped Editing.
+D1_L40=[57877]Project Closed.
+D1_L41=[57884]Project Opened.
+D1_L42=[57887]Project Closed.
+D1_L43=[57890]Project Opened.
+D1_L44=[57912]Started Editing.
+D1_L45=[58350]Stopped Editing.
+D2=01-03-2022
+D2_L=1
+D2_L1=[44947]Project Opened.
+D3=15-03-2022
+D3_L=1
+D3_L1=[46393]Project Opened.
+D4=17-03-2022
+D4_L=1
+D4_L1=[65851]Project Closed.
+D5=21-03-2022
+D5_L=32
+D5_L1=[53924]Project Opened.
+D5_L2=[54020]Started Editing.
+D5_L3=[54542]Stopped Editing.
+D5_L4=[54542]Started Debugging.
+D5_L5=[55249]Stopped Debugging.
+D5_L6=[55629]Started Editing.
+D5_L7=[56172]Stopped Editing.
+D5_E=84
+D5_D=24
+D5_L8=[56561]Project Closed.
+D5_L9=[56661]Project Opened.
+D5_L10=[56663]Started Editing.
+D5_L11=[56730]Stopped Editing.
+D5_L12=[56730]Project Closed.
+D5_L13=[56738]Project Opened.
+D5_L14=[56742]Started Editing.
+D5_L15=[56747]Stopped Editing.
+D5_L16=[56750]Project Closed.
+D5_L17=[56759]Project Opened.
+D5_L18=[56762]Started Editing.
+D5_L19=[57176]Stopped Editing.
+D5_L20=[57271]Started Editing.
+D5_L21=[57635]Stopped Editing.
+D5_L22=[57635]Project Closed.
+D5_L23=[57903]Project Opened.
+D5_L24=[57986]Started Editing.
+D5_L25=[58015]Stopped Editing.
+D5_L26=[58015]Started Debugging.
+D5_L27=[59118]Stopped Debugging.
+D5_L28=[59118]Started Editing.
+D5_L29=[62630]Stopped Editing.
+D5_L30=[62630]Started Debugging.
+D5_L31=[62812]Stopped Debugging.
+D5_L32=[62812]Project Closed.
+D6=28-03-2022
+D6_L=17
+D6_L1=[45569]Project Opened.
+D6_L2=[47093]Started Editing.
+D6_L3=[47839]Stopped Editing.
+D6_L4=[48018]Started Editing.
+D6_L5=[49027]Stopped Editing.
+D6_L6=[49101]Started Editing.
+D6_L7=[49474]Stopped Editing.
+D6_L8=[49487]Started Editing.
+D6_L9=[51883]Stopped Editing.
+D6_L10=[51895]Started Editing.
+D6_L11=[53759]Stopped Editing.
+D6_L12=[59130]Started Editing.
+D6_L13=[61504]Stopped Editing.
+D6_L14=[62275]Started Editing.
+D6_L15=[63876]Stopped Editing.
+D6_L16=[63950]Started Editing.
+D6_L17=[64508]Stopped Editing.
+D7=29-03-2022
+D7_E=143
+D7_D=0
+D7_L=1
+D7_L1=[66996]Project Closed.
+D8=05-04-2022
+D8_L=9
+D8_L1=[46103]Project Opened.
+D8_L2=[46139]Started Editing.
+D8_L3=[47174]Stopped Editing.
+D8_L4=[47448]Started Editing.
+D8_L5=[48069]Stopped Editing.
+D8_L6=[53254]Started Editing.
+D8_L7=[53703]Stopped Editing.
+D8_L8=[54941]Started Editing.
+D8_L9=[55863]Stopped Editing.
+D9=07-04-2022
+D9_E=31
+D9_D=0
+D9_L=1
+D9_L1=[65496]Project Closed.
+D10=11-04-2022
+D10_L=5
+D10_L1=[59588]Project Opened.
+D10_L2=[59689]Started Editing.
+D10_L3=[59994]Stopped Editing.
+D10_L4=[59999]Started Editing.
+D10_L5=[60449]Stopped Editing.
+
+[Opened Files]
+1=Aux_Keypad_LED.c
+t1=133
+Count=6
+2=..\PICC\PICC\Devices\24FV16KM202.h
+t2=1
+3=kbd_mod_123A_int.c
+t3=1
+4=Aux_Keypad_LED.h
+t4=1
+5=..\PICC\PICC\Drivers\LCD.C
+t5=1
+6=Aux_Keypad_LED.sta
+t6=-1
+[Aux_Keypad_LED.c]
+Type=4
+
+[defines]
+buildcount=143
+
+[debugperif]
+selected=Analog to Digital Converter 1
+
+[debugbreak]
+count=1
+f1=C:\Users\rjmes\Desktop\PICC\PICC\Drivers\LCD.C
+l1=340
+a.1=1346
+
+[debugwatch]
+count=0
+
+[debugexpr]
+expr=
+sideeffects=1
+[Units]
+Count=1
+1=Aux_Keypad_LED (main)

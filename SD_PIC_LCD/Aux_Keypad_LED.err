@@ -1,0 +1,6 @@
+>>> Warning 203 "Aux_Keypad_LED.c" Line 97(1,1): Condition always TRUE
+>>> Warning 202 "Aux_Keypad_LED.c" Line 91(18,27): Variable never used:   xPosition
+>>> Warning 202 "Aux_Keypad_LED.c" Line 94(12,19): Variable never used:   pressed
+      Memory usage:   ROM=50%      RAM=7% - 9%
+      0 Errors,  3 Warnings.
+Build Successful.

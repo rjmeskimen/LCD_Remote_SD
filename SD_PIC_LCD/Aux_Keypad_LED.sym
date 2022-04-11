@@ -1,0 +1,186 @@
+W0      @SCRATCH
+W0L     _RETURN_
+W0 -W1  @MULS3232.P1
+W0 -W1  @READ_ROM_MEMORY.P2
+W0 -W1  @PRINTFD32_948.P3
+W0      @delay_us1.P4
+W0 -W1  @PRINTFD32_115200_5712_5713.P5
+W0 -W1  @DIV3232B.P6
+W0 -W1  @DIVS3232A.P7
+W0L     @SPRINTF.P8
+W0      @delay_ms2.P9
+W0      @delay_us2.P10
+W0      @PRINTFD16_115200_5712_5713.P11
+W0      @delay_ms1.P12
+W1      @SCRATCH
+W1      @READ_PACKED_MEMORY.P1
+W1      @WRITE_PACKED_MEMORY.P2
+W2 -W3  @DIV3232B.P1
+W2      @READ_PACKED_MEMORY.P2
+W2 -W3  @MULS3232.P3
+W2      @READ_ROM_MEMORY.P4
+W2 -W3  @DIVS3232A.P5
+W2      @WRITE_PACKED_MEMORY.P6
+W3      @WRITE_PACKED_MEMORY.P1
+W3      @READ_PACKED_MEMORY.P2
+W3      @READ_ROM_MEMORY.P3
+W4      @PRINTFD32_948.P1
+W4      @PRINTFD32_115200_5712_5713.P2
+W4      @PRINTFD16_115200_5712_5713.P3
+122.6   LC1OUT
+12E.6   LC2OUT
+145.4   CCP_1_SSDG
+14C.4   CCP_1_ASEVT
+14C.5   CCP_1_TRCLR
+14C.6   CCP_1_TRSET
+169.4   CCP_2_SSDG
+170.4   CCP_2_ASEVT
+170.5   CCP_2_TRCLR
+170.6   CCP_2_TRSET
+18D.4   CCP_3_SSDG
+194.4   CCP_3_ASEVT
+194.5   CCP_3_TRCLR
+194.6   CCP_3_TRSET
+1B1.4   CCP_4_SSDG
+1B8.4   CCP_4_ASEVT
+1B8.5   CCP_4_TRCLR
+1B8.6   CCP_4_TRSET
+1D5.4   CCP_5_SSDG
+1DC.4   CCP_5_ASEVT
+1DC.5   CCP_5_TRCLR
+1DC.6   CCP_5_TRSET
+2CA     kbd
+635.0   C1OUT
+635.1   C1ENV
+637.0   C2OUT
+637.1   C2ENV
+639.0   C3OUT
+639.1   C3ENV
+800-801 rs232_errors
+802     g_LcdX
+803     g_LcdY
+804.0   serial_flag
+804.1   keypad_flag
+805     key
+806     UARTKey
+808-80B frequency
+80C-80D state
+80E-80F selected
+810-811 @sprintf_string
+812     MAIN.xPosition
+813.0   MAIN.pressed
+814-815 enterState.state
+814     lcd_init.i
+816-819 lcd_init.LCD_INIT_STRING
+818     lcd_cursor_on.on
+818-819 sweepRefresh.selected
+818-819 menuRefresh.selected
+81C     lcd_putc.c
+822     lcd_gotoxy.x
+823     lcd_gotoxy.y
+824     lcd_gotoxy.address
+82A     lcd_send_byte.address
+82B     lcd_send_byte.n
+82E     lcd_read_byte.low
+82F     lcd_read_byte.high
+830     lcd_read_nibble.n
+830     lcd_send_nibble.n
+832.0   kbd_getc.kbd_down
+832.1   kbd_getc.idd
+833     kbd_getc.last_key
+834     kbd_getc.col
+835     kbd_getc.kchar
+836     kbd_getc.row
+F80-FFF Stack
+
+ROM Allocation:
+000200  KEYS.call
+00020C  KEYS.data
+00021C  @const993.call
+000236  @const1017.call
+00024E  @const1021.call
+00026A  @const1022.call
+00027E  @const1023.call
+000296  @const1024.call
+0002AA  @const1041.call
+0002C2  @const1048.call
+0002DC  @const1049.call
+0002F4  @const1050.call
+00030E  @const1051.call
+000328  @const1072.call
+000342  @const1073.call
+00035E  @const1074.call
+00037A  @const1086.call
+000396  @const1090.call
+0003B2  @GETCH_BIU_1
+0003D4  isr_uart
+0003FC  kbd_getc
+0004EC  ist_ext
+000514  @delay_ms2
+000524  lcd_send_nibble
+00055C  lcd_read_nibble
+000594  lcd_read_byte
+0005DE  lcd_send_byte
+00062A  lcd_init
+0006A4  lcd_gotoxy
+000700  lcd_putc
+0007A6  menuRefresh
+0009CE  kbd_init
+0009EE  systemInit
+000A38  disableKeypad
+000A40  lcd_cursor_on
+000A5C  @DIV3232B
+000AA0  @PRINTFD32_948
+000BD0  readFrequency
+000C08  sweepRefresh
+001000  enterState
+00103E  @MULS3232
+001080  @DIVS3232A
+0010FE  @PRINTFD32_115200_5712_5713
+001216  @PRINTFD16_115200_5712_5713
+001316  lcd_clear
+001320  enableKeypad
+00132A  waitForResponse
+00138C  screenClearedDisplay
+0013B6  MAIN
+0013B6  @cinit1
+001408  @cinit2
+
+Project Directory:
+    C:\Users\rjmes\Desktop\SD_PIC_LCD\
+
+Project Files:
+    Aux_Keypad_LED.c                                        [05-Apr-22 15:26  CRC=948A3592]
+    Aux_Keypad_LED.h                                        [05-Apr-22 14:50  CRC=3EF0244A]
+    ..\PICC\PICC\Devices\24FV16KM202.h                      [07-Dec-21 11:40  CRC=FBC79051]
+    ..\PICC\PICC\Drivers\LCD.C                              [28-Mar-22 14:11  CRC=4C1D75C0]
+    kbd_mod_123A_int.c                                      [11-Apr-22 16:43  CRC=FFC52D19]
+
+Source signature=1AE9BA1F
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=596B
+
+Units:
+    Aux_Keypad_LED (main)
+
+Compiler Settings:
+    Processor:      PIC24FV16KM202
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: SIGNED: 8,16,32
+    Float,Double:   32,64
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Aux_Keypad_LED.xsym
+    Errors:      Aux_Keypad_LED.err
+    Ext Symbols: Aux_Keypad_LED.esym
+    INHX8:       Aux_Keypad_LED.hex
+    Symbols:     Aux_Keypad_LED.sym
+    List:        Aux_Keypad_LED.lst
+    Debug/COFF:  Aux_Keypad_LED.cof
+    Project:     Aux_Keypad_LED.ccspjt
+    Call Tree:   Aux_Keypad_LED.tre
+    Statistics:  Aux_Keypad_LED.STA
